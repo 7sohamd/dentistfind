@@ -104,6 +104,13 @@ const TrendBars: React.FC<TrendBarsProps> = ({ data }) => {
                             );
                         })}
                     </div>
+                    <div className="flex gap-1.5 mt-2">
+                        {data.map((_, index) => (
+                            <div key={index} style={{ width: '34px' }} className="text-center text-xs text-gray-400">
+                                {index === 0 ? '6 mo' : index === data.length - 1 ? 'Now' : ''}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,7 +139,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({ practice }) => {
     );
 };
 
-// Main Card Component
+// Main-Card
 interface PracticeSummaryCardProps {
     practice: PracticeSummary;
     globalMax: number;
@@ -162,15 +169,9 @@ const PracticeSummaryCard: React.FC<PracticeSummaryCardProps> = ({ practice, glo
                 <MetricCard label="Conversion Rate" value={practice.conversionRate.toFixed(1)} suffix="%" />
                 <MetricCard label="Show Rate" value={practice.showRate.toFixed(1)} suffix="%" trend={practice.showRateTrend} />
             </div>
-            <div className="p-6 pb-5">
+            <div className="p-6 pb-10">
                 <h4 className="text-sm font-semibold text-gray-700 mb-3 text-center">6-Month Patient Trend</h4>
                 <TrendBars data={practice.monthlyTrend} globalMax={globalMax} />
-                <div className="flex justify-center mt-2">
-                    <div className="flex justify-between text-xs text-gray-400" style={{ width: `${practice.monthlyTrend.length * 34 + (practice.monthlyTrend.length - 1) * 6}px` }}>
-                        <span>6 mo</span>
-                        <span>Now</span>
-                    </div>
-                </div>
             </div>
             <div className="px-6 pt-6 pb-6 bg-gray-50 flex-grow">
                 <Recommendations practice={practice} />
