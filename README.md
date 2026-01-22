@@ -39,6 +39,15 @@ src/
 
 - Node.js 16+ and npm
 
+### Cloning the Repository
+
+To clone this repository, run:
+
+```bash
+git clone https://github.com/7sohamd/dentistfind.git
+cd dentistfind
+```
+
 ### Installation
 
 ```bash
