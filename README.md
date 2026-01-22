@@ -145,7 +145,3 @@ Here's how I allocated the 2-hour timeframe:
 - **Layout & styling (45 minutes)**: Implemented UI components with Tailwind, responsive grid, and visual polish
 - **Data integration & testing (20 minutes)**: Connected mock data, tested responsive behavior, verified functionality
 - **Documentation (10 minutes)**: Code comments, README preparation, final review
-
-## License
-
-MIT
