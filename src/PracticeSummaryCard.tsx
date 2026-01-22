@@ -84,7 +84,7 @@ const TrendBars: React.FC<TrendBarsProps> = ({ data }) => {
                     ))}
                 </div>
                 <div className="relative h-40">
-                    <div className="absolute inset-0 flex flex-col justify-between pointer-events-none">
+                    <div className="absolute inset-0 flex flex-col justify-between pointer-events-none py-2.5">
                         <div className="border-t border-dashed border-gray-300"></div>
                         <div className="border-t border-dashed border-gray-300"></div>
                         <div className="border-t border-dashed border-gray-300"></div>
