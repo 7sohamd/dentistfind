@@ -7,6 +7,7 @@ export type PracticeSummary = {
     appointmentRequests: number;
     conversionRate: number;
     showRate: number;
+    showRateTrend?: number;
     monthlyTrend: number[];
 };
 

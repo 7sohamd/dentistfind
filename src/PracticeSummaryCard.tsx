@@ -1,6 +1,7 @@
 import React from 'react';
 import type { PracticeSummary, PerformanceStatus } from './types';
 import { getStatusFromConversionRate, getRecommendations } from './helpers';
+import { IoIosTrendingUp, IoIosTrendingDown } from 'react-icons/io';
 
 // Subcomponents
 interface StatusBadgeProps {
@@ -38,16 +39,29 @@ interface MetricCardProps {
     label: string;
     value: string | number;
     suffix?: string;
+    trend?: number;
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({ label, value, suffix = '' }) => {
+const MetricCard: React.FC<MetricCardProps> = ({ label, value, suffix = '', trend }) => {
     return (
         <div className="flex flex-col gap-1">
             <span className="text-sm text-gray-500 font-medium">{label}</span>
-            <span className="text-2xl font-bold text-gray-900">
-                {value}
-                {suffix && <span className="text-lg text-gray-600 ml-0.5">{suffix}</span>}
-            </span>
+            <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-bold text-gray-900">
+                    {value}
+                    {suffix && <span className="text-lg text-gray-600 ml-0.5">{suffix}</span>}
+                </span>
+                {trend !== undefined && (
+                    <div className={`flex items-center text-xs font-medium ${trend >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        {trend >= 0 ? (
+                            <IoIosTrendingUp className="w-3 h-3 mr-0.5" />
+                        ) : (
+                            <IoIosTrendingDown className="w-3 h-3 mr-0.5" />
+                        )}
+                        {trend > 0 ? '+' : ''}{trend}%
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
@@ -146,7 +160,7 @@ const PracticeSummaryCard: React.FC<PracticeSummaryCardProps> = ({ practice, glo
                 <MetricCard label="New Patients" value={practice.newPatientsThisMonth} />
                 <MetricCard label="Appointment Requests" value={practice.appointmentRequests} />
                 <MetricCard label="Conversion Rate" value={practice.conversionRate.toFixed(1)} suffix="%" />
-                <MetricCard label="Show Rate" value={practice.showRate.toFixed(1)} suffix="%" />
+                <MetricCard label="Show Rate" value={practice.showRate.toFixed(1)} suffix="%" trend={practice.showRateTrend} />
             </div>
             <div className="p-6 pb-5">
                 <h4 className="text-sm font-semibold text-gray-700 mb-3 text-center">6-Month Patient Trend</h4>

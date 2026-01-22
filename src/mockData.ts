@@ -11,6 +11,7 @@ export const mockPractices: PracticeSummary[] = [
         conversionRate: 23.3,
         monthlyTrend: [28, 32, 35, 38, 41, 42],
         showRate: 87.5,
+        showRateTrend: +5.2,
     },
     {
         id: '2',
@@ -22,6 +23,7 @@ export const mockPractices: PracticeSummary[] = [
         conversionRate: 8.2,
         monthlyTrend: [25, 22, 20, 19, 18, 18],
         showRate: 72.3,
+        showRateTrend: -2.1,
     },
     {
         id: '3',
@@ -33,5 +35,6 @@ export const mockPractices: PracticeSummary[] = [
         conversionRate: 15.9,
         monthlyTrend: [22, 25, 27, 28, 30, 31],
         showRate: 81.0,
+        showRateTrend: +1.5,
     },
 ];
