@@ -21,17 +21,17 @@ A modern, responsive dashboard for monitoring dental practice performance metric
 
 ```
 src/
-├── PracticeSummaryPage.tsx   # Main component (single file with all code)
-├── App.tsx                    # Application wrapper
-└── index.css                  # Tailwind imports & global styles
+├── App.tsx                 # Main dashboard wrapper and layout
+├── PracticeSummaryCard.tsx # Reusable card component with subcomponents
+├── types.ts                # Shared TypeScript interfaces
+├── helpers.ts              # Utility functions for formatting and logic
+├── mockData.ts             # Sample data for development
+├── main.tsx                # Application entry point
+└── index.css               # Global styles and Tailwind directives
 ```
 
-**Note**: All code is consolidated in `PracticeSummaryPage.tsx` for easy submission. The file contains:
-- TypeScript types (`PracticeSummary`, `PerformanceStatus`)
-- Helper functions (`getStatusFromConversionRate`, `formatPercent`, `clamp`, `getRecommendations`)
-- Subcomponents (`StatusBadge`, `MetricCard`, `TrendBars`, `Recommendations`, `PracticeSummaryCard`)
-- Mock data (3 sample practices)
-- Main page component
+**Note**: The code has been refactored from a single file into a modular structure for better maintainability and type safety.
+
 
 ## Getting Started
 
