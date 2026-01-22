@@ -21,18 +21,17 @@ A modern, responsive dashboard for monitoring dental practice performance metric
 
 ```
 src/
-├── components/
-│   ├── StatusBadge.tsx       # Performance status indicators
-│   ├── MetricCard.tsx         # Reusable metric display
-│   ├── TrendBars.tsx          # 6-month trend chart
-│   ├── Recommendations.tsx    # Smart recommendations
-│   └── PracticeSummaryCard.tsx # Main card component
-├── types.ts                   # TypeScript type definitions
-├── helpers.ts                 # Utility functions & business logic
-├── mockData.ts                # Sample practice data
-├── App.tsx                    # Main application wrapper
+├── PracticeSummaryPage.tsx   # Main component (single file with all code)
+├── App.tsx                    # Application wrapper
 └── index.css                  # Tailwind imports & global styles
 ```
+
+**Note**: All code is consolidated in `PracticeSummaryPage.tsx` for easy submission. The file contains:
+- TypeScript types (`PracticeSummary`, `PerformanceStatus`)
+- Helper functions (`getStatusFromConversionRate`, `formatPercent`, `clamp`, `getRecommendations`)
+- Subcomponents (`StatusBadge`, `MetricCard`, `TrendBars`, `Recommendations`, `PracticeSummaryCard`)
+- Mock data (3 sample practices)
+- Main page component
 
 ## Getting Started
 
@@ -66,23 +65,24 @@ npm run build
 
 #### 1.1 Why did you structure your components the way you did?
 
-I broke down the Practice Summary dashboard into modular, reusable components for better maintainability and scalability:
+While the code is in a single file for submission requirements, I structured it with clear separation of concerns:
 
-- **PracticeSummaryCard** – Main container component that orchestrates the card layout and data flow
-- **StatusBadge** – Self-contained badge component for performance status indicators
-- **MetricCard** – Reusable metric display component used across different data points
-- **TrendBars** – Chart visualization component with its own rendering logic
-- **Recommendations** – Business logic-driven recommendations list
+**Internal Organization** (within `PracticeSummaryPage.tsx`):
+- **Types section** – TypeScript type definitions (`PracticeSummary`, `PerformanceStatus`)
+- **Helper functions** – Business logic utilities (`getStatusFromConversionRate`, `formatPercent`, `getRecommendations`)
+- **Subcomponents** – Modular UI pieces (`StatusBadge`, `MetricCard`, `TrendBars`, `Recommendations`, `PracticeSummaryCard`)
+- **Mock data** – Sample practice data
+- **Main page component** – Orchestrates the overall layout
 
 This structure provides several benefits:
 
-- **Reusability**: Components like `MetricCard` and `StatusBadge` can be used across different dashboard views
-- **Testability**: Each component has a single responsibility, making unit testing straightforward
-- **Readability**: Smaller components are easier to understand and modify
-- **Separation of concerns**: UI rendering, business logic (helpers), and data types are cleanly separated
-- **Easier scaling**: New features can be added by creating new components or extending existing ones
+- **Reusability**: Components like `MetricCard` and `StatusBadge` can easily be extracted to separate files when scaling
+- **Testability**: Each component and helper has a single responsibility, making unit testing straightforward
+- **Readability**: Clear section separators make the file easy to navigate despite being single-file
+- **Separation of concerns**: UI rendering, business logic, and data types are cleanly separated within the file
+- **Easier scaling**: When ready to scale, components can be moved to separate files without structural changes
 
-Additionally, I extracted helper functions (`getStatusFromConversionRate`, `formatPercent`, `getRecommendations`) into a separate `helpers.ts` file, separating business logic from presentation.
+**Rationale for single-file**: For submission and portability, having all code in one file makes it easier to review and evaluate without managing multiple file dependencies.
 
 #### 1.2 Why did you choose your styling approach?
 
@@ -115,6 +115,7 @@ The layout adapts seamlessly from mobile (stacked cards) to tablet (2-column gri
 
 #### 2.1 How would you integrate this card into a larger PracticeFuel dashboard?
 
+- **Extract to component library**: Split the single file into separate modules (`/components`, `/utils`, `/types`) for better code organization
 - Create a **component library structure** with shared UI primitives (buttons, badges, metrics)
 - Implement **design tokens** for colors, spacing, typography, and breakpoints
 - Add **theming support** (light/dark mode) using CSS variables or Tailwind's dark mode
